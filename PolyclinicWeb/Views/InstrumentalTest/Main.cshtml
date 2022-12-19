@@ -1,0 +1,319 @@
+﻿@model PolyclinicWeb.Models.InstrumentalTestModel
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            InstrumentalTest
+        </title>
+    </head>
+
+
+    <body>
+        <style>
+            .StyleButton {
+                border-radius: 10px;
+                color: #194455;
+                background: #b9ebc4;
+                border: 1px solid green;
+                font-size: 10pt;
+                color: black;
+                height: 100%;
+                width: 100%;
+                margin:0px;
+            }
+            .StyleButton:hover {/* Характеристики при наведении */
+                font-weight: bolder;
+                font-size: 10pt;
+                background: rgba(0, 0, 0, 0);/* #b9ebc47e;*/
+                border: 1px solid green;
+            }
+
+            .StyleInput {
+                border: 0px solid green;
+                padding-top: 1px;
+                padding-bottom: 1px;
+                padding-right: 1px;
+                padding-left: 1px;
+                font-size: 10pt;
+                font-weight: normal;
+                text-align: left;
+                background: rgba(0, 0, 0, 0);
+                height: 100%;
+                width: 100%;
+                margin:0px;
+            }
+
+            .StyleThTd {
+                border: 1px solid green;
+                padding-top: 1px;
+                padding-bottom: 1px;
+                padding-right: 1px;
+                padding-left: 1px;
+                font-size: 10pt;
+                font-weight: bolder;
+                text-align: center;
+                background: rgba(0, 0, 0, 0);
+                word-wrap: break-word;
+            }
+
+            .StyleDiv {
+                overflow: auto;
+                text-align: center;
+            }
+            .StyleDiv::-webkit-scrollbar, .second_table::-webkit-scrollbar {           
+                background-color: #b9ebc4;
+            }   
+            .StyleDiv::-webkit-scrollbar-thumb, .second_table::-webkit-scrollbar-thumb {
+                background-color: green;
+                border-radius: 20px;
+            }
+
+            .Styleheader {
+                color:green;
+                font-style: italic;
+            }
+
+            body {
+                background-image: url("../Images/BackgroundImage.jpg");
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+            }
+        </style>
+
+
+        <form>
+            <div class="StyleDiv" style="width: 1000px;">
+                <table style="margin:auto"> 
+                    <tbody>
+                        <tr>
+                            <td style="height: 25px; width: 250px;">
+                                <button type="submit" name="Button" value="Patient" formaction="https://localhost:7240/Patient/Main" class="StyleButton">
+                                    Patient
+                                </button>
+                            </td>
+                            <td style="height: 25px; width: 250px;">
+                                <button type="submit" name="Button" value="ClinicalDiagnosis" formaction="https://localhost:7240/ClinicalDiagnosis/Main" class="StyleButton">
+                                    Clinical diagnosis
+                                </button>
+                            </td>
+                            <td style="height: 25px; width: 250px;">
+                                <button type="submit" name="Button" value="InstrumentalTest" formaction="https://localhost:7240/InstrumentalTest/Main" class="StyleButton">
+                                    Instrumental test
+                                </button>
+                            </td>
+                            <td style="height: 25px; width: 250px;">
+                                <button type="submit" name="Button" value="MedicalRecommendation" formaction="https://localhost:7240/MedicalRecommendation/Main" class="StyleButton">
+                                    Medical recommendation
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="height: 25px; width: 250px;">
+                                <button type="submit" name="Button" value="Vaccination" formaction="https://localhost:7240/Vaccination/Main" class="StyleButton">
+                                    Vaccination
+                                </button>
+                            </td>
+                            <td style="height: 25px; width: 250px;">
+                                <button type="submit" name="Button" value="DispensaryDiagnosis" formaction="https://localhost:7240/DispensaryDiagnosis/Main" class="StyleButton">
+                                    Dispensary diagnosis
+                                </button>
+                            </td>
+                            <td style="height: 25px; width: 250px;">
+                                <button type="submit" name="Button" value="LaboratoryTest" formaction="https://localhost:7240/LaboratoryTest/Main" class="StyleButton">
+                                    Laboratory test
+                                </button>
+                            </td>
+                            <td style="height: 25px; width: 250px;">
+                                <button type="submit" name="Button" value="AdditionalRecommendation" formaction="https://localhost:7240/AdditionalRecommendation/Main" class="StyleButton">
+                                    Additional recommendation
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody> 
+                </table>
+            </div>
+        </form>
+
+
+        <div class="StyleDiv" style="width: 1000px;">
+            <h2 class="Styleheader">Your instrumental tests release</h2>
+        </div>
+
+
+        <form>
+            <div class="StyleDiv" style="height: 200px; width: 1000px;">
+                <table style="border-collapse: collapse; margin:auto">
+                    <thead>
+                        <tr>
+                            <th class="StyleThTd" style="width: 50px;">
+                                Save
+                            </th>
+                            <th class="StyleThTd" style="width: 100px;">
+                                Release Date
+                            </th>
+                            <th class="StyleThTd" style="width: 100px; color:red">
+                                Appointment Date
+                            </th>
+                            <th class="StyleThTd" style="width: 150px; color:red">
+                                Name
+                            </th>
+                            <th class="StyleThTd" style="width: 500px;">
+                                Result
+                            </th>
+					    </tr>
+				    </thead>
+                    
+                    <tbody> 
+                        @if(Model.InstrumentalTestsRelease.Count > 0){
+                            @for(int int1 = 0; int1 <= Model.InstrumentalTestsRelease.Count - 1; int1++){
+                                <tr>
+                                    <td class="StyleThTd" style="height: 25px; width: 50px;">
+                                                <button type="submit" name="NumberEntry" value="@int1" formaction="https://localhost:7240/InstrumentalTest/SaveEntry" class="StyleButton">
+                                            Save
+                                        </button>
+                                    </td>
+                                    <td class="StyleThTd" style="height: 25px; width: 10px; display:none">
+                                        <input type="text" name="EntryForm[@int1].Id" value="@Model.InstrumentalTestsRelease[int1].Id" class="StyleInput">
+                                    </td>
+                                    <td class="StyleThTd" style="height: 25px; width: 100px;">
+                                        <input type="text" name="EntryForm[@int1].ReleaseDate" value="@Model.InstrumentalTestsRelease[int1].ReleaseDate" class="StyleInput">
+                                    </td>
+                                        <td class="StyleThTd" style="height: 25px; width: 100px;">
+                                        <input type="text" name="EntryForm[@int1].AppointmentDate" value="@Model.InstrumentalTestsRelease[int1].AppointmentDate" class="StyleInput">
+                                    </td>
+                                    <td class="StyleThTd" style="height: 25px; width: 150px;">
+                                                <input type="text" name="EntryForm[@int1].Name" value="@Model.InstrumentalTestsRelease[int1].Name" class="StyleInput">
+                                    </td>
+                                            <td class="StyleThTd" style="height: 25px; width: 500px;">
+                                        <input type="text" name="EntryForm[@int1].Result" value="@Model.InstrumentalTestsRelease[int1].Result" class="StyleInput">
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody> 
+                </table>
+            </div>
+        </form>
+
+
+        <div class="StyleDiv" style="width: 1000px;">
+            <h2 class="Styleheader">Your instrumental tests</h2>
+        </div>
+
+
+        <form>
+            <div class="StyleDiv" style="height: 200px; width: 1000px;">
+                <table style="border-collapse: collapse; margin:auto">
+                    <thead>
+                        <tr>
+                            <th class="StyleThTd" style="width: 50px;">
+                                Save
+                            </th>
+                            <th class="StyleThTd" style="width: 100px;">
+                                Release Date
+                            </th>
+                            <th class="StyleThTd" style="width: 100px; color:red">
+                                Appointment Date
+                            </th>
+                            <th class="StyleThTd" style="width: 150px; color:red">
+                                Name
+                            </th>
+                            <th class="StyleThTd" style="width: 500px;">
+                                Result
+                            </th>
+                        </tr>
+				    </thead>
+                    
+                    <tbody> 
+                        @if(Model.InstrumentalTests.Count > 0){
+                            @for (int int1 = 0; int1 <= Model.InstrumentalTests.Count - 1; int1++)
+                            {
+                                <tr>
+                                    <td class="StyleThTd" style="height: 25px; width: 50px;">
+                                                <button type="submit" name="NumberEntry" value="@int1" formaction="https://localhost:7240/InstrumentalTest/SaveEntry" class="StyleButton">
+                                            Save
+                                        </button>
+                                    </td>
+                                    <td class="StyleThTd" style="height: 25px; width: 10px; display:none">
+                                        <input type="text" name="EntryForm[@int1].Id" value="@Model.InstrumentalTests[int1].Id" class="StyleInput">
+                                    </td>
+                                    <td class="StyleThTd" style="height: 25px; width: 100px;">
+                                        <input type="text" name="EntryForm[@int1].ReleaseDate" value="@Model.InstrumentalTests[int1].ReleaseDate" class="StyleInput">
+                                    </td>
+                                    <td class="StyleThTd" style="height: 25px; width: 100px;">
+                                        <input type="text" name="EntryForm[@int1].AppointmentDate" value="@Model.InstrumentalTests[int1].AppointmentDate" class="StyleInput">
+                                    </td>
+                                    <td class="StyleThTd" style="height: 25px; width: 150px;">
+                                        <input type="text" name="EntryForm[@int1].Name" value="@Model.InstrumentalTests[int1].Name" class="StyleInput">
+                                    </td>
+                                            <td class="StyleThTd" style="height: 25px; width: 500px;">
+                                        <input type="text" name="EntryForm[@int1].Result" value="@Model.InstrumentalTests[int1].Result" class="StyleInput">
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody> 
+                </table>
+            </div>
+        </form>
+
+
+        <div class="StyleDiv" style="width: 1000px;">
+            <h2 class="Styleheader">Your new instrumental tests</h2>
+        </div>
+
+
+        <form>
+            <div class="StyleDiv" style="height: 75px; width: 1000px;">
+                <table style="border-collapse: collapse; margin:auto">
+                    <thead>
+                        <tr>
+                            <th class="StyleThTd" style="width: 50px;">
+                                Save
+                            </th>
+                            <th class="StyleThTd" style="width: 100px;">
+                                Release Date
+                            </th>
+                            <th class="StyleThTd" style="width: 100px; color:red">
+                                Appointment Date
+                            </th>
+                            <th class="StyleThTd" style="width: 150px; color:red">
+                                Name
+                            </th>
+                            <th class="StyleThTd" style="width: 500px;">
+                                Result
+                            </th>
+                        </tr>
+                    </thead>    
+                    
+                    <tbody> 
+                        <tr>
+                            <td class="StyleThTd" style="height: 25px; width: 50px;">
+                                <button type="submit" name="NumberEntry" value="NewEntry" formaction="https://localhost:7240/InstrumentalTest/SaveNewEntry" class="StyleButton">
+                                    Save
+                                </button>
+                            </td>
+                            <td class="StyleThTd" style="height: 25px; width: 100px;">
+                                <input type="text" name="ReleaseDate" class="StyleInput">
+                            </td>
+                            <td class="StyleThTd" style="height: 25px; width: 100px;">
+                                <input type="text" name="AppointmentDate" class="StyleInput">
+                            </td>
+                            <td class="StyleThTd" style="height: 25px; width: 150px;">
+                                <input type="text" name="Name" class="StyleInput">
+                            </td>
+                            <td class="StyleThTd" style="height: 25px; width: 500px;">
+                                <input type="text" name="Result" class="StyleInput">
+                            </td>
+                        </tr>
+                    </tbody> 
+                </table>
+            </div>
+        </form>
+    </body>
+</html>

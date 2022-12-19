@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolyclinicWeb", "PolyclinicWeb\PolyclinicWeb.csproj", "{0D45C361-CF85-4C8A-B374-35FA48500446}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolyclinicWebAPI", "PolyclinicWebAPI\PolyclinicWebAPI.csproj", "{C91943E0-179D-4A01-8D17-FD22BE8AE03B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D45C361-CF85-4C8A-B374-35FA48500446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D45C361-CF85-4C8A-B374-35FA48500446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D45C361-CF85-4C8A-B374-35FA48500446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D45C361-CF85-4C8A-B374-35FA48500446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C91943E0-179D-4A01-8D17-FD22BE8AE03B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C91943E0-179D-4A01-8D17-FD22BE8AE03B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C91943E0-179D-4A01-8D17-FD22BE8AE03B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C91943E0-179D-4A01-8D17-FD22BE8AE03B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {08469E94-9E0A-4DB2-A477-6CE2C410882A}
+	EndGlobalSection
+EndGlobal

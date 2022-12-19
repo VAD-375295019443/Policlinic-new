@@ -1,0 +1,362 @@
+﻿@model PolyclinicWeb.Models.PatientModel
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Patient
+        </title>
+    </head>
+
+
+    <body>
+        <style>
+            .StyleButton {
+                border-radius: 10px;
+                color: #194455;
+                background: #b9ebc4;
+                border: 1px solid green;
+                font-size: 10pt;
+                color: black;
+                height: 100%;
+                width: 100%;
+                margin:0px;
+            }
+            .StyleButton:hover {/* Характеристики при наведении */
+                font-weight: bolder;
+                font-size: 10pt;
+                background: rgba(0, 0, 0, 0);/* #b9ebc47e;*/
+                border: 1px solid green;
+            }
+
+            .StyleInput {
+                border: 0px solid green;
+                padding-top: 1px;
+                padding-bottom: 1px;
+                padding-right: 1px;
+                padding-left: 1px;
+                font-size: 10pt;
+                font-weight: normal;
+                text-align: left;
+                background: rgba(0, 0, 0, 0);
+                height: 100%;
+                width: 100%;
+                margin:0px;
+            }
+
+            .StyleThTd {
+                border: 1px solid green;
+                padding-top: 1px;
+                padding-bottom: 1px;
+                padding-right: 1px;
+                padding-left: 1px;
+                font-size: 10pt;
+                font-weight: bolder;
+                text-align: center;
+                background: rgba(0, 0, 0, 0);
+                word-wrap: break-word;
+            }
+
+            .StyleDiv {
+                overflow: auto;
+                text-align: center;
+            }
+            .StyleDiv::-webkit-scrollbar, .second_table::-webkit-scrollbar {           
+                background-color: #b9ebc4;
+            }   
+            .StyleDiv::-webkit-scrollbar-thumb, .second_table::-webkit-scrollbar-thumb {
+                background-color: green;
+                border-radius: 20px;
+            }
+
+            .Styleheader {
+                color:green;
+                font-style: italic;
+            }
+
+            body {
+                background-image: url("../Images/BackgroundImage.jpg");
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+            }
+        </style>
+
+
+        <form action="https://localhost:7240/Navigation/Main">
+            <div class="StyleDiv" style="width: 1000px;">
+                <table style="margin:auto"> 
+                    <tbody>
+                        <tr>
+                            <td style="height: 25px; width: 250px;">
+                                <button type="submit" name="Button" value="Patient" class="StyleButton" disabled>
+                                    Patient
+                                </button>
+                            </td>
+                            <td style="height: 25px; width: 250px;">
+                                <button type="submit" name="Button" value="ClinicalDiagnosis" class="StyleButton" disabled>
+                                    Clinical diagnosis
+                                </button>
+                            </td>
+                            <td style="height: 25px; width: 250px;">
+                                <button type="submit" name="Button" value="InstrumentalTest" class="StyleButton" disabled>
+                                    Instrumental test
+                                </button>
+                            </td>
+                            <td style="height: 25px; width: 250px;">
+                                <button type="submit" name="Button" value="MedicalRecommendation" class="StyleButton" disabled>
+                                    Medical recommendation
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="height: 25px; width: 250px;">
+                                <button type="submit" name="Button" value="Vaccination" class="StyleButton" disabled>
+                                    Vaccination
+                                </button>
+                            </td>
+                            <td style="height: 25px; width: 250px;">
+                                <button type="submit" name="Button" value="DispensaryDiagnosis" class="StyleButton" disabled>
+                                    Dispensary diagnosis
+                                </button>
+                            </td>
+                            <td style="height: 25px; width: 250px;">
+                                <button type="submit" name="Button" value="LaboratoryTest" class="StyleButton" disabled>
+                                    Laboratory test
+                                </button>
+                            </td>
+                            <td style="height: 25px; width: 250px;">
+                                <button type="submit" name="Button" value="AdditionalRecommendation" class="StyleButton" disabled>
+                                    Additional recommendation
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody> 
+                </table>
+            </div>
+        </form>
+
+
+        <div class="StyleDiv" style="width: 1000px;">
+            <h2 class="Styleheader">Your personal data</h2>
+        </div>
+
+        <form>
+            <div class="StyleDiv" style="width: 1000px;"> 
+                <table style="margin:auto">
+                    <tbody>
+                        <tr>
+                            <td class="StyleThTd" style="width: 170px; color:red">
+                                Email
+                            </td>
+                            <td class="StyleThTd" style="height: 25px; width: 250px;">
+                                <input type="text" name="Email" value="@Model.Patient.Email" class="StyleInput" readonly>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="StyleThTd" style="width: 170px; color:red">
+                                Surname
+                            </td>
+                            <td class="StyleThTd" style="height: 25px; width: 250px;">
+                                <input type="text" name="Surname" value="@Model.Patient.Surname" class="StyleInput">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="StyleThTd" style="width: 170px; color:red">
+                                Name
+                            </td>
+                            <td class="StyleThTd" style="height: 25px; width: 250px;">
+                                <input type="text" name="Name" value="@Model.Patient.Name" class="StyleInput">
+                            </td>
+                        </tr>
+						<tr>
+                            <td class="StyleThTd" style="width: 170px; color:red">
+								Middle Name
+							</td>
+                            <td class="StyleThTd" style="height: 25px; width: 250px;">
+								<input type="text" name="MiddleName" value="@Model.Patient.MiddleName" class="StyleInput">
+							</td>
+						</tr>
+						<tr>
+                            <td class="StyleThTd" style="width: 170px; color:red">
+								Date Of Birth
+							</td>
+                            <td class="StyleThTd" style="height: 25px; width: 250px;">
+                                <input type="text" name="DateOfBirth" value="@Model.Patient.DateOfBirth" class="StyleInput">
+							</td>
+						</tr>
+						<tr>
+                            <td class="StyleThTd" style="width: 170px; color:red">
+								Floor
+							</td>
+							<td class="StyleThTd" style="height: 25px; width: 250px;">
+								<input type="text" name="Floor" value="@Model.Patient.Floor" class="StyleInput">
+							</td>
+						</tr>
+						<tr>
+							<td class="StyleThTd" style="width: 170px; color:red">
+								Telephone
+							</td>
+							<td class="StyleThTd" style="height: 25px; width: 250px;">
+								<input type="text" name="Telephone" value="@Model.Patient.Telephone" class="StyleInput">
+							</td>
+						</tr>
+						<tr>
+							<td class="StyleThTd" style="width: 170px; color:red">
+								Country
+							</td>
+							<td class="StyleThTd" style="height: 25px; width: 250px;">
+								<input type="text" name="Country" value="@Model.Patient.Country" class="StyleInput">
+							</td>
+						</tr>
+						<tr>
+                            <td class="StyleThTd" style="width: 170px; color:red">
+								Region
+							</td>
+							<td class="StyleThTd" style="height: 25px; width: 250px;">
+								<input type="text" name="Region" value="@Model.Patient.Region" class="StyleInput">
+							</td>
+						</tr>
+						<tr>
+                            <td class="StyleThTd" style="width: 170px; color:red">
+								District
+							</td>
+							<td class="StyleThTd" style="height: 25px; width: 250px;">
+								<input type="text" name="District" value="@Model.Patient.District" class="StyleInput">
+							</td>
+						</tr>
+						<tr>
+                            <td class="StyleThTd" style="width: 170px; color:red">
+								Locality Type
+							</td>
+							<td class="StyleThTd" style="height: 25px; width: 250px;">
+								<input type="text" name="LocalityType" value="@Model.Patient.LocalityType" class="StyleInput">
+							</td>
+						</tr>
+						<tr>
+							<td class="StyleThTd" style="width: 170px; color:red">
+								Locality
+							</td>
+							<td class="StyleThTd" style="height: 25px; width: 250px;">
+								<input type="text" name="Locality" value="@Model.Patient.Locality" class="StyleInput">
+							</td>
+						</tr>
+						<tr>
+                            <td class="StyleThTd" style="width: 170px; color:red">
+								Street Type
+							</td>
+							<td class="StyleThTd" style="height: 25px; width: 250px;">
+								<input type="text" name="StreetType" value="@Model.Patient.StreetType" class="StyleInput">
+							</td>
+						</tr>
+						<tr>
+                            <td class="StyleThTd" style="width: 170px; color:red">
+								Street
+							</td>
+							<td class="StyleThTd" style="height: 25px; width: 250px;">
+								<input type="text" name="Street" value="@Model.Patient.Street" class="StyleInput">
+							</td>
+						</tr>
+						<tr>
+                            <td class="StyleThTd" style="width: 170px; color:red">
+								House
+							</td>
+							<td class="StyleThTd" style="height: 25px; width: 250px;">
+								<input type="text" name="House" value="@Model.Patient.House" class="StyleInput">
+							</td>
+						</tr>
+						<tr>
+                            <td class="StyleThTd" style="width: 170px; color:red">
+								Flat
+							</td>
+							<td class="StyleThTd" style="height: 25px; width: 250px;">
+								<input type="text" name="Flat" value="@Model.Patient.Flat" class="StyleInput">
+							</td>
+						</tr>
+						<tr>
+							<td class="StyleThTd" style="width: 170px;">
+								AdditionalInformation
+							</td>
+							<td class="StyleThTd" style="height: 25px; width: 250px;">
+								<input type="text" name="AdditionalInformation" value="@Model.Patient.AdditionalInformation" class="StyleInput">
+							</td>
+						</tr>
+                    </tbody> 
+                </table>
+            </div>
+        
+            <div class="StyleDiv" style="width: 1000px;">
+			    <h2>
+				    <button type="submit" name="Button" value="@Model.Patient.Id" formaction="https://localhost:7240/Patient/SaveNewEntry" class="StyleButton" style="height: 25px; width: 250px;">
+						    Save
+				    </button>
+			    </h2>
+		    </div>
+        </form>
+    </body>
+</html>
+
+
+
+<script>
+    /*
+    var articleDiv = document.querySelector("body.body");
+
+
+    //-------------
+    var elem1 = document.createElement("button");
+    elem1.id = "button1"
+    articleDiv.appendChild(elem1);
+
+    elem1.innerText = "Привет"+1;
+    elem1.style.background = "rgba(255,0,0,0.5)";
+    elem1.style.width = "150px";
+    elem1.style.height = "25px";
+    elem1.style.fontSize = "10px";
+
+    elem1.onclick = function changeText() {
+        elem1.innerText = "Привет"+2+;
+    }
+
+    elem1.onmousedown = function changeText() {
+        elem1.innerText = "Привет"+3;
+    }
+    elem1.onmouseup = function changeText() {
+        elem1.innerText = "Привет"+4;
+    }
+
+
+    //-------------
+    var elem2 = document.createElement("input");
+    elem2.type = "text";
+    articleDiv.appendChild(elem2);
+
+    elem2.style.width = "150px";
+    elem2.style.height = "25px";
+    elem2.style.fontSize = "10px";
+    elem2.disabled = "true";
+    elem2.readOnly = "true";
+    elem2.value = "Вася";
+    elem2.style.fontWeight = "900";
+    elem2.style.textAlign = "center";
+    elem2.style.background = "rgba(50,50,100,0.5)";
+
+
+    //-------------
+    var elem2 = document.createElement("input");
+    elem2.type = "text";
+    articleDiv.appendChild(elem2);
+
+    elem2.style.width = "150px";
+    elem2.style.height = "25px";
+    elem2.style.fontSize = "10px";
+    elem2.disabled = "true";
+    elem2.value = "Вася";
+    elem2.style.fontWeight = "900";
+    elem2.style.textAlign = "center";
+    elem2.style.background = "rgba(50,50,100,0.5)";
+    */
+</script>
